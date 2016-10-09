@@ -1,0 +1,21 @@
+# organisasi-dan-arsitektur-komputer
+L200150050
+Nama : bintang indra w
+NIM : L200150050
+
+x86
+Arsitektur x86 adalah rancangan Set Instruksi Komputer Kompleks (Complex Instruction Set Computer) dengan panjang instruksi yang bervariasi. Word disimpan dengan urutan endian-kecil. Kompatibilitas mundur menjadi motivasi terkuat dalam pengembangan arsitektur x86 (keputusan ini menjadi sangat penting dan sering dikritik, terutama oleh pesaing dari pendukung arsitektur prosesor lainnya, yang dibuat frustasi oleh sukses yang berkelanjutan dari arsitektur ini yang secara umum dipandang memilki banyak kelemahan). Prosesor-prosesor terkini dari x86 menerapkan beberapa langkah penerjemah (dekoder) “tambahan” untuk (saat eksekusi) memecah (sebagian besar) instruksi x86 kedalam potongan-potongan kecil instruksi (dikenal dengan “micro-ops”) yang selanjutnya dieksekusi oleh arsitektur setara dengan arsitektur RISC.
+
+Mode Real (Real Mode) 
+Intel 8086 dan 8088 dilengkapi dengan 14 16-bit register. Empat diantaranya (AX, BX, CX, DX) dirancang sebagai fungsi umum (general purpouse) (meskipun masing-masing juga memiliki fungsi khusus tambahan; misalnya hanya register CX yang dapat digunakan sebagai penghitung (counter) dalam instruksi loop). Setiap register dapat diakses sebagai dua byte (8-bit) terpisah (jadi byte-atas BX’s dapat diakses sebagai BH dan byte-bawah-nya sebagai BL). Selain itu, terdapat juga empat register segmen (CS, DS, SS dan ES). Register ini digunakan untuk membangun alamat memori. Ada juga dua register penunjuk (pointer) (SP yang menunjuk pada titik awal stack, dan BP yang dapat menunjuk pada titik manapun dalam stack atau memori). Ada dua register indeks (SI dan DI) yang dapat digunakan sebagai penunjuk dalam array. Dan terakhir, ada sebuah register penanda (register flag) yang terdapat didalamnya penanda-penanda seperti carry, overflow, zero dan lain-lain, dan juga sebuah penunjuk instruksi (instruction pointer – IP) yang menunjuk ke alamat instruksi yang sedang dieksekusi.
+
+Dalam mode real, memori diakses secara tersegmentasi. Hal ini dilakukan dengan menggeser (shifting) alamat segmen 4 bit ke kiri dan menambah sebuah ofset untuk menghasilkan alamat akhir sepanjang 20-bit. Contohnya, jika DS berisi nilai A000h dan SI berisi nilai 5677h, DS:SI akan mengacu pada titik alamat real DS × 16 + SI = A5677h. Jadi jumlah total alamat memori yang dapat diakses dalam mode real adalah 220 byte, atau 1 MiB, jumlah yang sangat mengesankan di tahun 1978. Seluruh alamat memori terbagi dalam segmen dan ofset; dan setiap tipe akses (kode, data, atau stack) memiliki register segmen tertentu (untuk data register yang digunakan DS, untuk kode digunakan register CS, dan untuk stack digunakan SS). Untuk mengakses data, register segmen dapat secara langsung dipilih (dengan melakukan ubah-paksa (override) prefik segmen) dari empat register segmen yang tersedia.
+
+Dengan aturan ini, dua pasang segmen/ofset yang berbeda bisa mengacu ke lokasi memori absolut yang sama. Jadi bila DS berisi A111h dan SI 4567h, DS:SI akan menunjuk ke alamat A56777h seperti di atas. Lebih lanjut, CS dan SS berperan vital bagi program agar berfungsi secara benar, sehingga hanya DS dan ES yang dapat dipakai untuk mengacu ke segmen data diluar program (atau lebih tepatnya, diluar segmen program yang sedang dieksekusi) atau stack. Skema ini, yang semula bertujuan mempertahankan kompatibilitas dengan Intel 8085, sering dikeluhkan oleh para programer (walaupun beberapa programer tidak terlalu mempedulikannya, dan popularitas x86 sebelum tahun-tahun mode proteksi diperkenalkan membuktikan bahwa hal ini bukan cacat yang sangat serius).
+
+Selain itu, 8086 juga memiliki 64 KB alamat I/O 8-bit (atau 32 K-word dari 16-bit), dan satu 64 KB (satu segmen) stack di memori yang didukung oleh hardware (memakai register-register SS, SP, dan BP). Hanya word (2 byte) yang bisa di-push ke stack. Stack tumbuh ke bawah (ke arah alamat yang lebih rendah secara numerik), dengan ujung bawah diacu oleh SS:SP. Ada 256 interrupt yang dapat diaktifkan oleh hardware maupun software. Interrupt tersebut bisa bertingkat, memanfaatkan stack untuk menyimpan alamat balik.
+Tipe – tipe Instruction
+Data processing
+ Data storage (main memory)
+ Data movement (I/O)
+ Program flow control 
