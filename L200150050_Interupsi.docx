@@ -1,0 +1,25 @@
+Nama : bintang indra w
+NIM : L200150050
+Prioritas Interupsi
+
+Urutan prioritas interupsi diilustrasikan oleh gambar berikut ini
+ . Interupsi dengan prioritas yang lebih tinggi akan didahulukan, artinya, program interupsinya akan diprioritaskan untuk dieksekusi terlebih dahulu.
+Jika interupsi dengan prioritas yang sama terjadi bersamaan, maka program interupsi akan dijalankan secara berurutan dari nomor subrutin interupsinya.
+Jika interupsi dengan prioritas yang lebih tinggi muncul ketika subrutin interupsi dengan prioritas yang lebih rendah sedang dieksekusi, maka program akan melompat dulu ke subrutin interupsi dengan prioritas yang lebih tinggi, dan setelah subrutinnya selesai dieksekusi, program akan kembali melanjutkan subrutin interupsi yang ditinggalkannya tadi.
+
+
+intpriority
+
+CPU dapat menerima 3 macam interupsi antara lain :
+1. Interupsi software (instruksi INT nH n= bilangan 00H s/d FFH)
+Interupsi software terdiri dari 256 dan diberi nomor 00H hingga FFH. Alamat awal masingmasing program pelayanan terdiri dari 4 byte, 2 byte untuk Code Segment dan 2 byte untuk Instruction Pointer.
+Dalam pemrograman assembler kita dapat melakukan interupsi secara software dengan perintah INT yang dapat dilihat dalam tabel interupsi. Interrupt Software dalam PC terbagi dua yaitu :
+a. Interrupt BIOS (Basic Input Output Sistem)
+diwujudkan dalam bentuk interupsi software berjumlah 32 dan akses pelayanannya tinggal memerintahkan dengan instruksi INT nH asal parameternya diwajibkan telah terpenuhi dahulu. INT nH terdiri dari 00H sampai 1FH yang disusun berurutan dan diberi servis number (nomor pelayanan) tersendiri.
+b. Interrupt DOS (Disk Operating Sistem)
+Interrupt DOS merupakan interupsi dari software Sistem Operasi terdiri dari INT 20H untuk kembali ke DOS dan INT 21H untuk operasi Input/Output.
+Program yang melayani suatu interupsi dinamakan Interrupt Handler.
+2. Non Maskable Interrupt (Interupsi hardware)
+dimana interupsi ini mutlak tidak dapat dicegah karena berasal dari sistem board atau IC.
+3. Maskable Interrupt
+(berasal dari hardware melalui pin INTR) yang dapat ditutup atau dicegah dengan instruksi CLI berasal dari interupsi perangkat lunak.
